@@ -2,10 +2,11 @@ using Extensions;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Events;
 using UnityEngine.EventSystems;
 using UnityEngine.UI;
 
-public sealed class ModernToggleButton : MonoBehaviour, IPointerEnterHandler, IPointerExitHandler
+public sealed class ModernToggleButton : MonoBehaviour
 {
     [SerializeField]
     private EventSystem _eventSystem;
@@ -25,11 +26,18 @@ public sealed class ModernToggleButton : MonoBehaviour, IPointerEnterHandler, IP
     [SerializeField, Header("Background Graphic Color")]
     private Color selected, unselected;
 
+    [SerializeField, Header("Tool Tip Info")]
+    MenuToolTips menuToolTipControl;
+
+    [SerializeField]
+    ToolTipItem toolTipInfo;
+
     private Vector2? _originalPosition;
     private Vector2 velocity;
 
     private void Start()
     {
+        Physics.queriesHitTriggers = true;
         StartCoroutine(SlideAnimation());
     }
 
@@ -42,8 +50,10 @@ public sealed class ModernToggleButton : MonoBehaviour, IPointerEnterHandler, IP
             var targetVector = new Vector2(_originalPosition.Value.x + _slideDistance, _originalPosition.Value.y);
             var position = (Vector2)_button.transform.localPosition;
             float percentage = (position.x - targetVector.x) / (_originalPosition.Value.x - targetVector.x);
+
             _buttonBackground.color = Color.Lerp(selected, unselected, percentage);
-           
+            
+
             if (_isToggledOn == true)
             {
                 _button.transform.localPosition = Vector2.SmoothDamp(position, targetVector, ref velocity, 0.1f);
@@ -56,12 +66,18 @@ public sealed class ModernToggleButton : MonoBehaviour, IPointerEnterHandler, IP
         }
     }
 
-    public void OnPointerExit(PointerEventData eventData)
+    void OnMouseExit()
     {
         _isToggledOn = false;
+        menuToolTipControl.SetDescription(null);
     }
 
-    public void OnPointerEnter(PointerEventData eventData)
+    private void OnMouseEnter()
+    {
+        menuToolTipControl.SetDescription(toolTipInfo);
+    }
+
+    void OnMouseOver()
     {
         _isToggledOn = true;
     }
