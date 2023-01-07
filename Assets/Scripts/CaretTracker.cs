@@ -2,6 +2,7 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using System.Text;
+using System.Linq;
 using UnityEngine;
 using UnityEngine.Events;
 using TMPro;
@@ -55,6 +56,7 @@ public class CaretTracker : MonoBehaviour
     public string HighlightedString => highlightedString;
 
     public float InitYPosition { get; private set; }
+
     bool initYSet = false;
     int _currentLineIndex = 0;
     int _previousLineCount;

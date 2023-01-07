@@ -7,7 +7,10 @@ public class FocusView : MonoBehaviour
     RectTransform rectTransform;
 
     [SerializeField]
-    Scrollbar scrollBar;
+    RectTransform _inputRectTransform;
+
+    [SerializeField]
+    Scrollbar verticalScrollBar, horizontalScrollBar;
 
     [SerializeField]
     CaretTracker tracker;
@@ -43,7 +46,16 @@ public class FocusView : MonoBehaviour
         rectTransform.anchoredPosition = tracker.RectTransform.anchoredPosition;
     }
 
-    public void Interpolate(float value)
+    internal void InterpolateHorizontally(float value)
+    {
+        if (focusingOnCaret)
+            focusingOnCaret = false;
+
+        if (focusingOnCaret == false)
+            rectTransform.anchoredPosition = new Vector2(Mathf.Lerp(_inputRectTransform.rect.size.x, tracker.GetFirstCharacterPosition().x, value), rectTransform.anchoredPosition.y);
+    }
+
+    public void InterpolateVertically(float value)
     {
         if (focusingOnCaret)
             focusingOnCaret = false;
@@ -56,13 +68,14 @@ public class FocusView : MonoBehaviour
     {
         if (focusingOnCaret == false) return;
 
-        if ((tracker.GetLastCharacterPosition().y - tracker.GetFirstCharacterPosition().y) == 0)
+        if ((tracker.GetLastCharacterPosition().y - tracker.GetFirstCharacterPosition().y) == 0
+            || (_inputRectTransform.rect.size.x - tracker.GetFirstCharacterPosition().x == 0))
             return;
 
-        var value = 
-
-        scrollBar.value = 1 - (Mathf.Abs((rectTransform.anchoredPosition.y - tracker.GetFirstCharacterPosition().y))
+        verticalScrollBar.value = 1 - (Mathf.Abs((rectTransform.anchoredPosition.y - tracker.GetFirstCharacterPosition().y))
         / Mathf.Abs((tracker.GetLastCharacterPosition().y - tracker.GetFirstCharacterPosition().y)));
 
+        horizontalScrollBar.value = 1 - (Mathf.Abs((rectTransform.anchoredPosition.x - tracker.GetFirstCharacterPosition().x))
+            / Mathf.Abs((_inputRectTransform.rect.size.x - tracker.GetFirstCharacterPosition().x)));
     }
 }
