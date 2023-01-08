@@ -285,6 +285,7 @@ GameObject:
   m_Component:
   - component: {fileID: 57589778}
   - component: {fileID: 57589779}
+  - component: {fileID: 57589780}
   m_Layer: 5
   m_Name: Content
   m_TagString: Untagged
@@ -344,6 +345,19 @@ MonoBehaviour:
   m_ChildScaleWidth: 0
   m_ChildScaleHeight: 0
   m_ReverseArrangement: 0
+--- !u!114 &57589780
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 57589777}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4ac7277d19c2ed64baee1fed151ba1b5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  elementsCount: 0
 --- !u!1 &226033940
 GameObject:
   m_ObjectHideFlags: 0
@@ -1715,7 +1729,19 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 1594709457}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 892539749}
+        m_TargetAssemblyTypeName: ModernToggleButton, Assembly-CSharp
+        m_MethodName: OnSelect
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!224 &1686144257 stripped
 RectTransform:
   m_CorrespondingSourceObject: {fileID: 3740642283756816371, guid: 9b86ed79f00a1de459cb2ab2013fe2f8, type: 3}
@@ -2839,7 +2865,19 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 1345274809908237245}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 1345274808465806601}
+        m_TargetAssemblyTypeName: ModernToggleButton, Assembly-CSharp
+        m_MethodName: OnSelect
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &1345274810292683724
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -4235,7 +4273,19 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 6670386360587595639}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 6670386360216545731}
+        m_TargetAssemblyTypeName: ModernToggleButton, Assembly-CSharp
+        m_MethodName: OnSelect
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &6670386360587595639
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -4499,7 +4549,19 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 8558340703889712645}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 8558340704527622321}
+        m_TargetAssemblyTypeName: ModernToggleButton, Assembly-CSharp
+        m_MethodName: OnSelect
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!1 &8558340703889712666
 GameObject:
   m_ObjectHideFlags: 0
@@ -5304,7 +5366,19 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 8643195843084328368}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 8643195842377997060}
+        m_TargetAssemblyTypeName: ModernToggleButton, Assembly-CSharp
+        m_MethodName: OnSelect
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!222 &8643195843084328371
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -5681,7 +5755,19 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 8792691825841599841}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 8792691825408914389}
+        m_TargetAssemblyTypeName: ModernToggleButton, Assembly-CSharp
+        m_MethodName: OnSelect
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!1 &8792691825841599870
 GameObject:
   m_ObjectHideFlags: 0
