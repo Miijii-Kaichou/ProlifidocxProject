@@ -1,12 +1,9 @@
-using Extensions;
 using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
-using UnityEngine.Events;
 using UnityEngine.EventSystems;
 using UnityEngine.UI;
 
-public sealed class ModernToggleButton : MonoBehaviour
+public sealed class ModernToggleButton : MonoBehaviour, IGUIElement
 {
     [SerializeField]
     private EventSystem _eventSystem;
@@ -34,10 +31,25 @@ public sealed class ModernToggleButton : MonoBehaviour
 
     private Vector2? _originalPosition;
     private Vector2 velocity;
+    private UISelectionStateManager localUISelectionManager;
+
+    public bool IsSelected
+    {
+        get
+        {
+            return localUISelectionManager.IsSelected(this);
+        }
+        set
+        {
+            localUISelectionManager.Select(this);
+        }
+    }
 
     private void Start()
     {
+        localUISelectionManager ??= GetComponentInParent<UISelectionStateManager>();
         Physics.queriesHitTriggers = true;
+        localUISelectionManager.Include(this);
         StartCoroutine(SlideAnimation());
     }
 
@@ -52,9 +64,8 @@ public sealed class ModernToggleButton : MonoBehaviour
             float percentage = (position.x - targetVector.x) / (_originalPosition.Value.x - targetVector.x);
 
             _buttonBackground.color = Color.Lerp(selected, unselected, percentage);
-            
 
-            if (_isToggledOn == true)
+            if (_isToggledOn == true || IsSelected)
             {
                 _button.transform.localPosition = Vector2.SmoothDamp(position, targetVector, ref velocity, 0.1f);
                 yield return null;
@@ -64,6 +75,11 @@ public sealed class ModernToggleButton : MonoBehaviour
             _button.transform.localPosition = Vector2.SmoothDamp(position, _originalPosition.Value, ref velocity, 0.1f);
             yield return null;
         }
+    }
+
+    public void OnSelect()
+    {
+        IsSelected = true;
     }
 
     void OnMouseExit()
