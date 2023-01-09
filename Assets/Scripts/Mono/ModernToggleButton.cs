@@ -42,6 +42,7 @@ public sealed class ModernToggleButton : MonoBehaviour, IGUIElement
         set
         {
             localUISelectionManager.Select(this);
+            localUISelectionManager.cachedToolTip = toolTipInfo;
         }
     }
 
@@ -71,7 +72,6 @@ public sealed class ModernToggleButton : MonoBehaviour, IGUIElement
                 yield return null;
                 continue;
             }
-
             _button.transform.localPosition = Vector2.SmoothDamp(position, _originalPosition.Value, ref velocity, 0.1f);
             yield return null;
         }
@@ -85,7 +85,7 @@ public sealed class ModernToggleButton : MonoBehaviour, IGUIElement
     void OnMouseExit()
     {
         _isToggledOn = false;
-        menuToolTipControl.SetDescription(null);
+        menuToolTipControl.SetDescription(localUISelectionManager.cachedToolTip);
     }
 
     private void OnMouseEnter()

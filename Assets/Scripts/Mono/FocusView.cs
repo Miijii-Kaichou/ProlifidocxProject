@@ -52,7 +52,7 @@ public class FocusView : MonoBehaviour
             focusingOnCaret = false;
 
         if (focusingOnCaret == false)
-            rectTransform.anchoredPosition = new Vector2(Mathf.Lerp(_inputRectTransform.rect.size.x, tracker.GetFirstCharacterPosition().x, value), rectTransform.anchoredPosition.y);
+            rectTransform.anchoredPosition = new Vector2(Mathf.Lerp(_inputRectTransform.rect.size.x / 2, tracker.GetFirstCharacterPosition().x, value), rectTransform.anchoredPosition.y);
     }
 
     public void InterpolateVertically(float value)
@@ -76,6 +76,6 @@ public class FocusView : MonoBehaviour
         / Mathf.Abs((tracker.GetLastCharacterPosition().y - tracker.GetFirstCharacterPosition().y)));
 
         horizontalScrollBar.value = 1 - (Mathf.Abs((rectTransform.anchoredPosition.x - tracker.GetFirstCharacterPosition().x))
-            / Mathf.Abs((_inputRectTransform.rect.size.x - tracker.GetFirstCharacterPosition().x)));
+            / Mathf.Abs(((_inputRectTransform.rect.size.x / 2) - tracker.GetFirstCharacterPosition().x)));
     }
 }

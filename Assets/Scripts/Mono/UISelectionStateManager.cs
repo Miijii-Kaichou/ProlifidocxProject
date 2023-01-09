@@ -11,7 +11,7 @@ public class UISelectionStateManager : MonoBehaviour
 
     [SerializeField]
     int elementsCount = 0;
-
+    internal ToolTipItem cachedToolTip;
 
     internal bool IsSelected(IGUIElement uiElement)
     {
@@ -34,5 +34,10 @@ public class UISelectionStateManager : MonoBehaviour
     {
         _ElementStateCollection.Add(uiElement, false);
         elementsCount = _ElementStateCollection.Count;
+    }
+
+    public void InvokeGameQuit()
+    {
+        Application.Quit(0);
     }
 }
