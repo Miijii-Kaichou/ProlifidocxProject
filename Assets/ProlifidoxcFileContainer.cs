@@ -16,9 +16,10 @@ public class ProlifidoxcFileContainer : MonoBehaviour
     string documentName = "Untitled";
     int charactersLeft = MaxCharacterCount;
     private int wordCount;
-    const int MaxCharacterCount = 30270;
+    const int MaxCharacterCount = 7567;
 
     string doxcInfoFormat = "{0} | {1} Words | {2} Characters Left";
+    private bool atMaxCharacterCount => inputField.text.Length >= MaxCharacterCount - 1;
 
     private void Start()
     {
@@ -29,17 +30,19 @@ public class ProlifidoxcFileContainer : MonoBehaviour
     {
         float time = 0f;
         const float maxDuration = 1f;
+        char[] separators = new char[] { ' ', '\b', '\n', '\t' };
 
         while(true)
         {
             time += Time.deltaTime;
 
-            if(time > maxDuration)
+            if(time > maxDuration || atMaxCharacterCount)
             {
                 time = 0f;
                 yield return null;
                 charactersLeft =  MaxCharacterCount - inputField.text.Length;
-                wordCount = inputField.text.Split(new char[] {' ','\b','\n','\t'}, StringSplitOptions.RemoveEmptyEntries).Length;
+                inputField.text = inputField.text[..(MaxCharacterCount - 1)];
+                wordCount = inputField.text.Split(separators, StringSplitOptions.RemoveEmptyEntries).Length;
                 tmp_DocxInfo.text = string.Format(doxcInfoFormat, documentName, wordCount, charactersLeft);
                 continue;
             }
