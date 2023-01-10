@@ -5,14 +5,26 @@ using UnityEngine;
 public class DocxDepotSubMenuOptions : MonoBehaviour, IItemListCollection
 {
     #region Constants
+    const string Avatars    = "Avatars";
+    const string Icons      = "Icons";
+    const string Themes     = "Themes";
+    const string DocxToken  = "DocxToken";
+    const string FreeWrite  = "Free Write";
     #endregion
 
-    public string Tag => throw new System.NotImplementedException();
+    public string Tag => "DocxDepot™";
 
-    public ListItem[] ListItems => throw new System.NotImplementedException();
+    public ListItem[] ListItems => new ListItem[]
+    {
+        new(){icon = null, header = Avatars,    content = string.Empty },
+        new(){icon = null, header = Icons,      content = string.Empty },
+        new(){icon = null, header = Themes,     content = string.Empty },
+        new(){icon = null, header = DocxToken,  content = string.Empty },
+        new(){icon = null, header = FreeWrite,  content = string.Empty }
+    };
 
     public void ApplyList()
     {
-        throw new System.NotImplementedException();
+        SubMenuSelectionHandler.DisplayList(this);
     }
 }

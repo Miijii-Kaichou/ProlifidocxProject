@@ -1,13 +1,17 @@
 using System.Collections;
 using UnityEngine;
-using UnityEngine.EventSystems;
 using UnityEngine.UI;
 
 public sealed class ModernToggleButton : MonoBehaviour, IGUIElement
 {
+    [Header("Primitve Data")]
     [SerializeField]
-    private EventSystem _eventSystem;
+    private bool _isToggledOn = false;
 
+    [SerializeField]
+    private int _slideDistance = 40;
+
+    [Header("Graphics")]
     [SerializeField]
     private Button _button;
 
@@ -15,15 +19,13 @@ public sealed class ModernToggleButton : MonoBehaviour, IGUIElement
     private Image _buttonBackground;
 
     [SerializeField]
-    private bool _isToggledOn = false;
-
-    [SerializeField]
-    private int _slideDistance = 40;
+    private AnimaticIcon icon;
 
     [SerializeField, Header("Background Graphic Color")]
     private Color selected, unselected;
 
-    [SerializeField, Header("Tool Tip Info")]
+    [Header("Tool Tip Info")]
+    [SerializeField]
     MenuToolTips menuToolTipControl;
 
     [SerializeField]

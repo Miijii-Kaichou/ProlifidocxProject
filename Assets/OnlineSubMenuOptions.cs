@@ -5,6 +5,7 @@ using UnityEngine;
 public class OnlineSubMenuOptions : MonoBehaviour, IItemListCollection
 {
     #region Constants
+    const string DocxNews       = "DocxNews";
     const string QuickSession   = "Quick Session";
     const string GroupSession   = "Group Session";
     const string TypingTest     = "Typing Test";
@@ -13,6 +14,7 @@ public class OnlineSubMenuOptions : MonoBehaviour, IItemListCollection
 
     public ListItem[] ListItems => new ListItem[]
     {
+        new(){icon = null, header = DocxNews, content = string.Empty},
         new(){icon = null, header = QuickSession, content = string.Empty},
         new(){icon = null, header = GroupSession, content = string.Empty},
         new(){icon = null, header = TypingTest, content = string.Empty},
