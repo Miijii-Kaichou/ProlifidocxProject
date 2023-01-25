@@ -12,5 +12,12 @@ public class AnimaticIcon : MonoBehaviour
     [SerializeField]
     private Image icon;
 
-    
+    IEnumerator ListenerCycle()
+    {
+        while(true)
+        {
+
+            yield return null;
+        }
+    }
 }
